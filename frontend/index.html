@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能音乐生成系统</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎵 智能音乐生成系统</h1>
+            <p>基于Transformer的情感音乐生成与旋律补全</p>
+        </header>
+
+        <main>
+            <section class="card" id="emotion-generation-section">
+                <h2>🎭 情感音乐生成</h2>
+                <div class="form-group">
+                    <label for="emotion-select">选择情绪:</label>
+                    <select id="emotion-select">
+                        <option value="Q1">Q1 (欢快/兴奋)</option>
+                        <option value="Q2">Q2 (活泼/动感)</option>
+                        <option value="Q3">Q3 (悲伤/忧郁)</option>
+                        <option value="Q4">Q4 (平静/舒缓)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="num-notes">音符数量:</label>
+                    <input type="range" id="num-notes" min="50" max="300" value="100" step="10">
+                    <span id="num-notes-value">100</span> 个音符
+                </div>
+                <button id="generate-btn" class="btn-primary">生成音乐</button>
+            </section>
+
+            <section class="card" id="melody-completion-section">
+                <h2>🎹 旋律补全创作</h2>
+                <div class="form-group">
+                    <label for="midi-upload">上传MIDI种子文件:</label>
+                    <input type="file" id="midi-upload" accept=".mid" style="display: none;">
+                    <label for="midi-upload" class="upload-icon-btn">
+                        📁 点击选择文件上传
+                    </label>
+                    <p class="hint" id="selected-file">请上传包含初始旋律的.mid文件</p>
+                </div>
+                <button id="complete-btn" class="btn-primary" disabled>补全旋律</button>
+            </section>
+
+            <section class="card" id="result-section">
+                <h2>📥 生成结果</h2>
+                <div id="result-message" class="message hidden"></div>
+                <div id="result-container" class="hidden">
+                    <h3>生成的音乐文件</h3>
+                    <div id="file-info"></div>
+                    <button id="download-btn" class="btn-secondary">下载MIDI文件</button>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2024 智能音乐生成系统 | 基于深度学习的音乐创作</p>
+        </footer>
+    </div>
+
+    <div id="loading-overlay" class="loading-overlay hidden">
+        <div class="loading-spinner"></div>
+        <p id="loading-message">正在生成音乐，请稍候...</p>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
